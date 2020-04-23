@@ -1,5 +1,6 @@
 import 'package:covid_app/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,6 +32,7 @@ class HomeScreen extends StatelessWidget {
           ClipPath(
             clipper: MyClipper(),
             child: Container(
+              padding: EdgeInsets.only(left: 40, top: 50, right: 20),
               height: 350,
               width: double.infinity,
               decoration: BoxDecoration(
@@ -45,6 +47,38 @@ class HomeScreen extends StatelessWidget {
                 image: DecorationImage(
                   image: AssetImage("assets/images/virus.png"),
                 ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: SvgPicture.asset("assets/icons/menu.svg"),
+                  ),
+                  SizedBox(height: 20),
+                  Expanded(
+                    child: Stack(
+                      children: <Widget>[
+                        SvgPicture.asset("assets/icons/Drcorona.svg",
+                        width: 230,
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.topCenter,
+                        ),
+                        Positioned(
+                          top: 20,
+                          left: 150,
+                          child: Text(
+                            "All you need \nis stay at home.",
+                            style: kHeadingTextStyle.copyWith(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Container(), // Doens't seem right this work around :( TODO: Don't use it
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
