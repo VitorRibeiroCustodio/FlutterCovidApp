@@ -121,9 +121,162 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 20),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Case Update\n",
+                            style: kTitleTextstyle,
+                          ),
+                          TextSpan(
+                            text: "Newest update April 22",
+                            style: TextStyle(
+                              color: kTextLightColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    Text(
+                      "See details",
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Container(
+                  padding: EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset(0, 4),
+                        blurRadius: 30,
+                        color: kShadowColor,
+                      ),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Counter(
+                        color: kInfectedColor,
+                        number: 1046,
+                        title: "Infected",
+                      ),
+                      Counter(
+                        color: kDeathColor,
+                        number: 87,
+                        title: "Deaths",
+                      ),
+                      Counter(
+                        color: kRecovercolor,
+                        number: 46,
+                        title: "Recovered",
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "Spread of Virus",
+                      style: kTitleTextstyle,
+                    ),
+                    Text(
+                      "See details",
+                      style: TextStyle(
+                        color: kPrimaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20),
+                  height: 178,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset(0, 10),
+                        blurRadius: 30,
+                        color: kShadowColor,
+                      ),
+                    ]
+                  ),
+                  child: Image.asset(
+                    "assets/images/map.png",
+                    fit: BoxFit.contain,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
+  }
+}
+
+class Counter extends StatelessWidget {
+  final int number;
+  final Color color;
+  final String title;
+
+  const Counter({
+    Key key,
+    this.number,
+    this.color,
+    this.title,
+  }) : super(key: key);
+
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+       Container(
+          padding: EdgeInsets.all(6),
+          height: 25,
+          width: 25,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: color.withOpacity(.26),
+          ),
+       child: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.transparent,
+            border: Border.all(
+            color: color,
+             width: 2,
+          ),
+        ),
+      ),
+    ),
+    SizedBox(height: 10),
+     Text(
+      "$number",
+      style: TextStyle(fontSize: 40, color: color),
+     ),
+      Text(title, style: kSubTextStyle),
+     ],
+   );
   }
 }
 
